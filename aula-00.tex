@@ -1,0 +1,626 @@
+\documentclass[10pt]{beamer}
+
+% Template predefined settings
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% Color Themes
+% \usecolortheme{wolverine}
+% \usecolortheme{beaver}
+% \usecolortheme{dolphin}
+% \usecolortheme{seagull}
+% \usecolortheme{seahorse}
+% \usecolortheme{rose}
+
+% Language and basic staff
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+
+% Formatting
+\usepackage[absolute,overlay]{textpos}
+\usepackage{bookmark}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{hyperref}
+\usepackage{multicol} % Multicols
+
+% Ident First Line
+\renewcommand{\indent}{\hspace*{2em}}
+
+% Colors and Design
+\usepackage{xcolor}
+
+% Defining some colors
+\definecolor{lightblue}{rgb}{0,0.55,0.5}
+\definecolor{azeroblue}{RGB}{204,255,255}
+\definecolor{strpink}{rgb}{0.858, 0.188, 0.478}
+
+% Math
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage[all,2cell]{xy}
+
+% Defining Theorems
+\usepackage{amsthm}
+
+% Numbered Theorems in Beamer
+\setbeamertemplate{theorems}[numbered]
+
+% Personalized Theorems
+% \theoremstyle{definition}
+% \newtheorem{defn}{Definição}[section]
+% \newtheorem{teo}[defn]{Teorema} % usa mesmo contador da definição
+% \newtheorem{lem}[defn]{Lema}
+% \newtheorem{cor}[defn]{Corolário}
+% \newtheorem{prop}[defn]{Proposição}
+% \newtheorem{exerc}{Exercício}
+% \newtheorem{ex}[defn]{Exemplo}
+% \newtheorem{rem}[defn]{Observação}
+% \newtheorem{fat}[defn]{Fato}
+
+% Personalized Theorems with Colors
+\theoremstyle{definition}
+\newtheorem{defn}{\textcolor{brown}{Definição}}[section]
+\newtheorem{teo}[defn]{\textcolor{purple}{Teorema}} % usa mesmo contador da definição
+\newtheorem{lem}[defn]{\textcolor{lightblue}{Lema}}
+\newtheorem{cor}[defn]{\textcolor{green}{Corolário}} 
+\newtheorem{prop}[defn]{\textcolor{blue}{Proposição}} 
+\newtheorem{exerc}{\textcolor{red}{Exercício}}[section]
+\newtheorem{ex}[defn]{\textcolor{strpink}{Exemplo}}
+\newtheorem{rem}[defn]{\textcolor{orange}{Observação}}
+\newtheorem{fat}[defn]{\textcolor{yellow}{Fato}}
+\newtheorem{conj}[defn]{\textcolor{red}{Conjectura}}
+
+% Declarations
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+\graphicspath{{./figuras/}} % path for images
+
+% Block Wlements with Background Colors
+\metroset{block=fill}
+
+% Insert an "E" for sinalizing that I need to write on blackboard
+% \tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+
+% Tikz Diagrams
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Estatística Avançada - Aula 00}
+\subtitle{Fundamentos: Tipos de Variáveis, Estatística Descritiva, Amostragem}
+% \date{\today}
+\date{}
+\author{Kaique Matias de Andrade Roberto}
+\institute{Ciências Atuariais - Ciências Econômicas \\
+$ $\\
+HECSA - Escola de Negócios \\ $ $ \\ FIAM-FAAM-FMU}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{figuras/fmu.PNG}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+%%% Contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conteúdo}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents%[hideallsubsections]
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Conceitos Importantes de Disciplinas Anteriores}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Conceitos Importantes de Disciplinas Anteriores}
+% \begin{itemize}
+%     \item Conjuntos;
+%     \item Exponenciais e Logaritmos;
+%     \item Funções;
+%     \item Probabilidade.
+% \end{itemize}
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipos de Variáveis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent Medidas que descrevem diferenças em tipo ou natureza indicando a presença ou ausência de uma característica ou propriedade, são chamadas de \textbf{dados não-métricos ou qualitativos}.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent As variáveis não métricas ou qualitativas representam características de um indivíduo, objeto ou elemento que não podem ser medidas ou quantificadas; as respostas são dadas em categorias.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent Imagine que um questionário será aplicado para levantar dados da renda familiar de uma amostra de consumidores, com base em determinadas faixas salariais. 
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{block}{}
+\vfill A Tabela abaixo apresenta as categorias das variáveis.
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+ Classe & Salários Mínimos (SM) & Renda Familiar (em reais) \\ \hline
+ A & Acima de $20$ SM & Acima de $24240$ reais \\ \hline
+ B & $10$ a $20$ SM & De $12120$ até $24240$ reais \\ \hline
+ C & $4$ a $10$ SM & De $4848$ até $12120$ reais \\ \hline
+ D & $2$ a $4$ SM &  De $2424$ até $4848$ reais \\ \hline
+ E & Até $2$ SM &  Até $2424$ reais\\ \hline
+\end{tabular}
+\end{table}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{block}{}
+\vfill\indent Observe que ambas as variáveis são qualitativas, já que os dados são representados por faixas.
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{block}{}
+\vfill Porém, é muito comum a classificação incorreta por parte dos pesquisadores quando a variável apresenta valores numéricos nos dados.
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{block}{}
+\vfill Nesse caso, é possível apenas o cálculo de frequências, e não de medidas-resumo, como média e desvio-padrão. 
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{block}{}
+\vfill\indent Uma possível tabela de frequências obtidas para cada faixa de renda é apresentada abaixo.
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+ Frequências & Renda Familiar (em Reais) \\ \hline
+ $10\%$ & Acima de $24240$ reais \\ \hline
+ $18\%$ & De $12120$ até $24240$ reais \\ \hline
+ $24\%$ & De $4848$ até $12120$ reais \\ \hline
+ $36\%$ & De $2424$ até $4848$ reais \\ \hline
+ $12\%$ & Até $2424$ reais \\ \hline
+\end{tabular}
+\end{table}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Um erro comum encontrado em trabalhos que utilizam variáveis qualitativas representadas por números é o cálculo da média da amostra, ou de qualquer outra medida-resumo.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent O pesquisador calcula, inicialmente, a média dos limites de cada faixa, supondo que esse valor corresponde à média real dos consumidores situados naquela faixa; mas como a distribuição dos dados não é necessariamente linear ou simétrica em torno da média, essa hipótese é muitas vezes violada.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Para que haja condições de se calcular medidas-resumo, como média e desvio-padrão, a variável em estudo deve ser, necessariamente, quantitativa.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent  Os \textbf{dados métricos ou quantitativos} são utilizados quando indivíduos diferem em quantia ou grau em relação a um atributo em particular.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent As variáveis métricas ou quantitativas representam características de um indivíduo, objeto ou elemento resultantes de uma contagem (conjunto finito de valores) ou de uma mensuração (conjunto infinito de valores).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Há várias maneiras de representar uma variável métrica, como veremos à seguir.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+Temos representações Gráficas:
+\begin{itemize}
+    \item gráfico de linhas;
+    \item dispersão;
+    \item histograma;
+    \item ramo e-folhas;
+    \item boxplot;
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+medidas de posição ou localização: 
+\begin{itemize}
+    \item média;
+    \item mediana;
+    \item moda;
+    \item quartis;
+    \item decis;
+    \item percentis;
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+medidas de dispersão ou variabilidade:
+\begin{itemize}
+    \item amplitude;
+    \item desvio-médio;
+    \item variância;
+    \item desvio-padrão;
+    \item erro-padrão;
+    \item coeficiente de variação.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Estas variáveis podem ser discretas ou contínuas. As variáveis discretas podem assumir um conjunto finito ou enumerável de valores que são provenientes, frequentemente, de uma contagem, por exemplo, o número de filhos ($0,1,2,...$).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Já as variáveis contínuas assumem valores pertencentes a um intervalo de números reais, por exemplo, peso ou renda de um indivíduo.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent No banco de dados abaixo, as variáveis Idade, Peso e Altura são quantitativas.
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+ Nome & Idade (anos) & Peso (kg) & Altura (m) \\ \hline
+ Mariana & $48$ & $62$ & $1,60$ \\ \hline
+ Luiz & $54$ & $84$ & $1,76$ \\ \hline
+ Roberta & $41$ & $56$ & $1,62$ \\ \hline
+ Leonardo & $30$ & $82$ & $1,90$ \\ \hline
+ Melissa & $28$ & $54$ & $1,68$ \\ \hline
+ Sandro & $50$ & $70$ & $1,72$ \\ \hline
+\end{tabular}
+\end{table}
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent As variáveis ainda podem ser classificadas de acordo com o nível ou escala de mensuração.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent \textbf{Mensuração} é o processo de atribuir números ou rótulos a objetos, pessoas, estados ou eventos de acordo com as regras específicas para representar quantidades ou qualidades dos atributos.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+$$\xymatrix@!=1pc{
+& &*+[F]{\mbox{Nominal}}\\ 
+*+[F]{\mbox{Variável Qualitativa}}\ar[drr]\ar[urr] & & \\
+& & *+[F]{\mbox{Ordinal}}
+}$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+$$\xymatrix@!=1pc{
+& & *+[F]{\mbox{Intervalar}}\\ 
+*+[F]{\mbox{Variável Quantitativa}}\ar[drr]\ar[urr] & & \\
+& & *+[F]{\mbox{Razão}}
+}$$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent A \textbf{escala nominal} classifica as unidades em classes ou categorias em relação à caraterística representada, não estabelecendo qualquer relação de grandeza ou de ordem. É denominada nominal porque as categorias se diferenciam apenas pelo nome.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Podem ser atribuídos rótulos numéricos às categorias das variáveis, porém, operações aritméticas como adição, subtração, multiplicação e divisão sobre esses números não são admissíveis. A escala nominal permite apenas algumas operações aritméticas mais elementares.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Por exemplo, pode-se contar o número de elementos de cada classe ou ainda aplicar testes de hipóteses referentes à distribuição das unidades da população nas classes.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Desta forma, a maioria das estatísticas usuais, como média e desvio-padrão, não tem sentido para variáveis qualitativas de escala nominal.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent Como exemplos de variáveis não métricas em escalas nominais, podemos mencionar profissão, religião, cor, estado civil, localização geográfica ou país de origem.
+\end{ex}
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent Uma variável não métrica em \textbf{escala ordinal} classifica as unidades em classes ou categorias em relação à característica representada, estabelecendo uma relação de ordem entre as unidades das diferentes categorias.
+\end{defn}
+\end{frame}
+
+\begin{frame}{Tipos de Variáveis}
+\indent  A escala ordinal é uma escala de ordenação, designando uma posição relativa das classes segundo uma direção. Qualquer conjunto de valores pode ser atribuído às categorias das variáveis, desde que a ordem entre elas seja respeitada.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Assim como na escala nominal, operações aritméticas (somas, diferenças, multiplicações e divisões) entre esses valores não fazem sentido. Desse modo, a aplicação das estatísticas descritivas usuais também é limitada para variáveis de natureza nominal. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent Exemplos de variáveis ordinais incluem opinião e escalas de preferência de consumidores, grau de escolaridade, classe social, faixa etária, etc.
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent A \textbf{escala intervalar}, além de ordenar as unidades quanto à característica mensurada, possui uma unidade de medida constante. A origem ou o ponto zero dessa escala de medida é arbitrário e não expressa ausência de quantidade.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent Um exemplo clássico de escala intervalar é a temperatura medida em graus Celsius ou Fahrenheit. A escolha do zero é arbitrária e diferenças de temperaturas iguais são determinadas por meio da identificação de volumes guais de expansão no líquido usado no termômetro.
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent A maioria das estatísticas descritivas pode ser aplicada para dados de variável com escala intervalar, com exceção de estatísticas baseadas na escala de razão, como o coeficiente de variação.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{defn}
+\vfill\indent A \textbf{escala de razão} ordena as unidades em relação à característica mensurada e possui uma unidade de medida constante. Por outro lado, a origem (ou ponto zero) é única e o valor zero expressa ausência de quantidade. Dessa forma, é possível saber se um valor em um intervalo específico da escala múltiplo de outro.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Razões iguais entre valores da escala correspondem a razões iguais entre unidades mensuradas. Assim, escalas de razão são invariantes sob transformações de proporções positivas.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Por exemplo, se uma unidade tem 1 metro e outra 3 metros, pode-se dizer que a última tem uma altura três vezes superior à da primeira.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\indent Dentre as escalas de medida, a escala de razão é a mais elaborada, pois permite o uso de todas as operações aritméticas. Além disso, todas as estatísticas descritivas podem ser aplicadas para dados de uma variável expressa em escala de razão.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tipos de Variáveis}
+\begin{ex}
+\vfill\indent Exemplos de variáveis cujos dados podem estar na escala de razão incluem renda, idade, quantidade produzida de determinado produto e distância percorrida.
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tópicos de Estatística Descritiva}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\indent A \textbf{estatística descritiva} descreve e sintetiza as características principais observadas em um conjunto de dados por meio de tabelas, gráficos e medidas-resumo, permitindo ao pesquisador melhor compreensão do comportamento dos dados.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\indent A análise é baseada no conjunto de dados em estudo (amostra), sem tirar quaisquer conclusões ou inferências acerca da população.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\indent Antes de iniciarmos o uso da estatística descritiva, é necessário identificarmos o tipo de variável a ser estudada.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\indent O tipo de variável é crucial no cálculo de estatísticas descritivas e na representação gráfica de resultados.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+ \begin{center}
+  \includegraphics[width=1\linewidth]{figuras/diagram-01.jpg}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\begin{exerc}
+\vfill\indent Considerando os dados da Tabela abaixo
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+ Nome & Idade (anos) & Peso (kg) & Altura (m) \\ \hline
+ Mariana & $48$ & $62$ & $1,60$ \\ \hline
+ Luiz & $54$ & $84$ & $1,76$ \\ \hline
+ Roberta & $41$ & $56$ & $1,62$ \\ \hline
+ Leonardo & $30$ & $82$ & $1,90$ \\ \hline
+ Melissa & $28$ & $54$ & $1,68$ \\ \hline
+ Sandro & $50$ & $70$ & $1,72$ \\ \hline
+\end{tabular}
+\end{table}
+calcule a média, variância e desvio-padrão das variáveis Idade, Peso e Altura.
+\end{exerc}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Tópicos de Estatística Descritiva}
+\indent Agora vamos realizar (uma parte) da análise descritiva dos dados na planilha motocicletas.xlsx.
+\tikz[remember picture, overlay] {\node[anchor=south west, outer sep=0pt] at (current page.south west) {\includegraphics[width=0.05\linewidth]{figuras/inserir-exemplo.PNG}};}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução à Amostragem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\begin{defn}
+\vfill\indent A \textbf{população} é o conjunto com todos os indivíduos, objetos ou elementos a serem estudados, que apresentam uma ou mais características em comum. O \textbf{censo} é o estudo dos dados relativos a todos os elementos da população.
+\end{defn}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\indent As populações podem ser finitas ou infinitas. As populações finitas são de tamanho limitado, permitindo que seus elementos sejam contados; já as populações infinitas são de tamanho ilimitado, não permitindo a contagem dos elementos.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\begin{ex}
+\vfill\indent Como exemplos de populações finitas, podemos mencionar a quantidade de empregados em determinada empresa, de associados em um clube, de produtos fabricados em determinado período, etc. 
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\indent Quando o número de elementos da população, embora possa ser contado, for muito grande, assumimos que a população é infinita.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\begin{ex}
+\vfill\indent Quando o número de
+elementos da população, embora possa ser contado, for muito grande, assumimos que a população é infinita. São exemplos de populações consideradas infinitas a quantidade de habitantes no mundo, de residências existentes no Rio de Janeiro, de pontos em uma reta, etc.
+\end{ex}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\indent Desta forma, existem situações em que o estudo com todos os elementos da população é impossível ou indesejável, de modo que a alternativa seja extrair um subconjunto da população em análise, denominado \textbf{amostra}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\indent A amostra deve ser representativa da população em estudo, daí a importância deste capítulo. A partir das informações colhidas na amostra e utilizando procedimentos estatísticos apropriados, os resultados obtidos podem ser utilizados para generalizar, inferir ou tirar conclusões acerca da população (inferência estatística).
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+ \begin{center}
+  \includegraphics[width=0.94\linewidth]{figuras/tecnicas-amostragem.PNG}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introdução à Amostragem}
+\indent 
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Introdução à Amostragem}
+% \indent 
+% \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comentários Finais}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais}
+\indent Em resumo, na aula de hoje nós:
+\begin{itemize}
+    \item recapitulamos os tipos de variáveis;
+    \item aprendemos como classificar variáveis;
+    \item recapitulamos alguns tópicos de Estatística Descritiva;
+    \item tivemos um primeiro contato com os conceitos de Amostragem.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais}
+\indent Nas próximas aulas nós vamos focar em:
+\begin{itemize}
+    \item variáveis aleatórias discretas e contínuas;
+    \item propriedades e exemplos envolvendo tais variáveis.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Comentários Finais}
+\begin{alertblock}{ATIVIDADE PARA ENTREGAR (E COMPOR A NOTA N1)}
+        \vfill\indent Resolva em grupos de até 4 integrantes os Exercícios 0.4-0.6.
+\end{alertblock}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Referências}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Referências}
+ \begin{center}
+  \includegraphics[width=0.4\linewidth]{figuras/excel-spss.jpg}
+ \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bons Estudos!}
+ \begin{center}
+  \includegraphics[width=0.79\linewidth]{figuras/cafe.jpg}
+ \end{center}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[allowframebreaks]{References}
+
+%   \bibliography{demo}
+%   \bibliographystyle{abbrv}
+
+% \end{frame}
+
+\end{document}
